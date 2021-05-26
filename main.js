@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require('electron')  
+const {app, BrowserWindow, Menu} = require('electron')  
 
 function createWindow() {
     // 创建浏览器窗口
@@ -13,5 +13,16 @@ function createWindow() {
 
     // 打开开发者工具
     // win.webContents.openDevTools()
+    const handleOption = Menu.buildFromTemplate([
+        {
+            label: '点击',
+            click() {
+                alert('123')
+            }
+        }
+    ]) // 构造MenuItem的选项数组。
+    // 设置菜单
+    // Menu.setApplicationMenu(null)
+    Menu.setApplicationMenu(handleOption)
 }
 app.whenReady().then(createWindow)
